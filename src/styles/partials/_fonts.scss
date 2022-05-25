@@ -1,0 +1,19 @@
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf) format("opentruetype"),
+        url(../../assets/fonts/AvenirNextLTPro.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf) format("opentruetype"),
+        url(../../assets/fonts/AvenirNextLTProBold.ttf) format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+body{
+    font-family: "Avenir", serif;
+}
