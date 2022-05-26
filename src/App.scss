@@ -1,1 +1,4 @@
 @use "./styles/partials/mixins" as *;
+body{
+    box-sizing: border-box;
+}
