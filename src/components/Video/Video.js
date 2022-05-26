@@ -11,7 +11,16 @@ class Video extends React.Component {
     videos: Videos,
     videoDetails: videoDetails,
   };
-
+  handleClickNewVideo = (_, video) => {
+    this.setState((state) => {
+      // Iterate over the list of items from state
+      const updatedList = state.videos.map((v) => {
+        if (v.id === video.id) {
+          const newVideo = [...v];
+        }
+      });
+    });
+  };
   render() {
     return (
       <>
