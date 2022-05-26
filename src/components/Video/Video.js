@@ -3,19 +3,19 @@ import React from "react";
 import playIcon from "../../assets/icons/play.svg";
 import fullscreenIcon from "../../assets/icons/fullscreen.svg";
 import volumeupIcon from "../../assets/icons/volume_up.svg";
-import * as VideoDetailsList from "../../data/video-details.json";
-import * as VideosID from "../../data/videos.json";
+// import * as VideoDetailsList from "../../data/video-details.json";
+// import * as VideosID from "../../data/videos.json";
 
-let videoDetailsList = VideoDetailsList;
-let videosID = VideosID;
-function Video() {
+// let videoDetailsList = VideoDetailsList;
+// let videosID = VideosID;
+function Video(props) {
   return (
     <>
-      <div className="video" key={videosID[0].id}>
+      <div className="video">
         <div className="video__player">
           <video
             className="video__player--show"
-            poster={videosID[0].image}
+            poster={props.showingVideo.image}
           ></video>
           <div className="controls video__player--controls" data-state="hidden">
             <button className="controls__play" type="button" data-state="play">
@@ -24,7 +24,7 @@ function Video() {
             <div className="controls__progress">
               <span className="controls__progress--bar"></span>
               <span className="controls__progress--time">
-                0:00 / {videosID[0].duration}
+                0:00 / {props.showingVideo.duration}
               </span>
             </div>
             <div className="controls__right">

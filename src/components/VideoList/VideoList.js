@@ -1,32 +1,31 @@
 import "./VideoList.scss";
-import * as VideosID from "../../data/videos.json";
-import * as VideoDetailsList from "../../data/video-details.json";
-function VideoList() {
-  const newList = VideosID;
-  const videoDetailsList = VideoDetailsList;
-  //   const itemShow = videoDetailsList.map((item) => {
-  //     return (
-  //       <>
-  //         <img key={item.id} src={item.image} alt="video thumbnail" />
-  //         <p>{item.title}</p>
-  //         <p>{item.channel}</p>
-  //       </>
-  //     );
-  //   });
+// import * as VideosID from "../../data/videos.json";
+// import * as VideoDetailsList from "../../data/video-details.json";
+function VideoList({ newList, newVideo, id }) {
+  // const videoDetailsList = Array.from(VideoDetailsList);
   return (
-    //   console.log(videoDetailsList[1]);
-
-    <div>
+    // {console.log(videoDetailsList)};
+    <div className="list">
       {
         // itemShow
 
-        videoDetailsList.map((item) => {
+        newList.map((item) => {
           return (
-            <>
-              <img key={item.id} src={item.image} alt="video thumbnail" />
+            <div
+              className="list__item"
+              onClick={() => {
+                newVideo(item.id);
+              }}
+              key={item.id}
+            >
+              <img
+                className="list__thumbnail"
+                src={item.image}
+                alt="video thumbnail"
+              />
               <p>{item.title}</p>
               <p>{item.channel}</p>
-            </>
+            </div>
           );
         })
       }
