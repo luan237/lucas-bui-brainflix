@@ -69,5 +69,14 @@ a{
 .sub-header{
     @include sub-header;
 }
+.label-button{
+    @include label-button;
+}
 
+// Video controls
+@mixin video{
+    background-color: rgba($video-compo-color, 0.5);
+    border-radius: .5rem;
+    border: none;
+}
 
