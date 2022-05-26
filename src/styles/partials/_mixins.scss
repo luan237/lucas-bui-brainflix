@@ -1,6 +1,6 @@
 @use "./variable" as *;
 @use "./color" as *;
-@use "./fonts" as*;
+@use "./fonts" as *;
 
 @mixin tablet {
     @media screen and (min-width: $tablet-breakpoint){
@@ -12,4 +12,62 @@
         @content;
     }
 }
+
+// Fonts size
+@mixin page-header {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    @include tablet{
+        font-size: 33px;
+        line-height: 44px;
+    }   
+}
+@mixin section-header {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700; 
+}
+@mixin sub-header {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 700;
+    @include tablet{
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+@mixin body-copy {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    @include tablet{
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+@mixin label-button {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;   
+}
+
+// Font setup
+body{
+    font-family: "Avenir", serif;
+    @include body-copy;
+}
+a{
+    text-decoration: none;
+}
+.page-header{
+    @include page-header;
+}
+.section-header{
+    @include section-header;
+}
+.sub-header{
+    @include sub-header;
+}
+
 

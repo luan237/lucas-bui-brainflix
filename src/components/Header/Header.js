@@ -33,7 +33,7 @@ function Header(props) {
           className="header__upload--icon"
           alt="upload icon"
         />
-        <p className="header__upload--text">UPLOAD</p>
+        <p className="header__upload--text sub-header">UPLOAD</p>
       </div>
     </header>
   );
