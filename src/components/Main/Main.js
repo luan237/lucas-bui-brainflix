@@ -63,7 +63,7 @@ class Main extends React.Component {
       <>
         <Video showingVideo={this.state.showingVideo} />
         {/* {console.log(this.state.showingVideo)} */}
-        <VideoDetails />
+        <VideoDetails showingVideo={this.state.showingVideo} />
         <VideoList
           newList={this.state.videoDetailsList}
           newVideo={this.updatedVideo}
