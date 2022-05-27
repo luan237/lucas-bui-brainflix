@@ -47,6 +47,7 @@ function Video(props) {
             </div>
           </div>
         </div>
+        <p className="video__name">{props.showingVideo.title}</p>
       </div>
     </>
   );
