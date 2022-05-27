@@ -3,18 +3,22 @@
 .video{
     margin: 0;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     &__player{
         height: 22rem;
         &--show{
         height: 21rem;
-        // width: 100%;
+        width: 100%;
         aspect-ratio: 16 / 9;
         // position: absolute;
         }
     }
 }
 .controls{
-        width: 100%;
+        width: 85%;
+        margin: 0 auto;
         display: flex;
         position: absolute;
         // top: 13vh;
