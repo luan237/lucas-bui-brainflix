@@ -1,0 +1,39 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/color" as *;
+.detail{
+    display: flex;
+    justify-content: space-between;
+    color: $text2-color;
+    & > *{
+        width: 50%;
+    }
+    &__left{
+        @include flexDisplay($direction: column, $justifyContent: space-between);
+        &--author{
+            color: $text-color;
+            font-weight: 700;
+        }
+    }
+    &__right{
+        @include flexDisplay($direction: column, $justifyContent: space-between);
+        & > *{
+            @include flexDisplay($direction: row, $justifyContent: flex-start);
+            height: 1.5rem;
+        }
+        & *{
+            padding-right: 1rem;
+            text-align: center;
+            margin: 0;
+        }
+        // &--views{
+
+        //     & > *{
+        //         margin: 0;
+        //         tex
+        //     }
+        // }
+        // &--likes{
+        //     @include flexDisplay($direction: row, $justifyContent: flex-start);
+        // }
+    }
+}
