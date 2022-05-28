@@ -5,6 +5,7 @@ import VideoList from "../VideoList/VideoList.js";
 import React from "react";
 import VideoDetailsList from "../../data/video-details.json";
 import VideosID from "../../data/videos.json";
+import Comments from "../Comments/Comments";
 
 const videosID = Array.from(VideosID);
 const videoDetailsList = Array.from(VideoDetailsList);
@@ -35,8 +36,8 @@ class Main extends React.Component {
     return (
       <>
         <Video showingVideo={this.state.showingVideo} />
-
         <VideoDetails showingVideo={this.state.showingVideo} />
+        <Comments showingComments={this.state.showingVideo.comments} />
         <VideoList
           newList={this.updatedVideoList()}
           newVideo={this.updatedVideo}
