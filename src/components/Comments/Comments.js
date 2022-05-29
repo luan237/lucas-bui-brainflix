@@ -1,5 +1,4 @@
 import "./Comments.scss";
-import avaPic from "../../assets/images/Mohan-muruge.jpg";
 import commentIcon from "../../assets/icons/add_comment.svg";
 
 function Comments(props) {
@@ -8,24 +7,23 @@ function Comments(props) {
     <div className="comments">
       <p className="comments__count">{comments.length} Comments</p>
       <div className="comments__container">
-        <img src={avaPic} alt="avatar" />
-        <div className="comments__form">
-          <form className="comments__form--container">
-            <label className="comments__form--label" htmlFor="comment">
-              JOIN THE CONVERSATION
-            </label>
-            <input
-              className="comments__form--input"
-              type="text"
-              name="comment"
-              placeholder="Add a new comment"
-            ></input>
-            <button>
-              <img src={commentIcon} alt="comment icon" />
-              COMMENT
-            </button>
-          </form>
-        </div>
+        <div className="comments__container--avatar"></div>
+        <form className="comments__form">
+          <label className="comments__form--label" htmlFor="comment">
+            JOIN THE CONVERSATION
+          </label>
+          <textarea
+            className="comments__form--input"
+            type="text"
+            name="comment"
+            placeholder="Add a new comment"
+            id="comment"
+          ></textarea>
+          <button className="comments__form--button">
+            <img src={commentIcon} alt="comment icon" />
+            <p>COMMENT</p>
+          </button>
+        </form>
       </div>
       <div className="comments__fan">
         {comments.map((comment) => {

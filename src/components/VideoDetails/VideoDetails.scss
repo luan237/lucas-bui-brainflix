@@ -1,0 +1,30 @@
+@use "../../styles/partials/color" as *;
+@use "../../styles/partials/mixins" as *;
+.detail{
+    padding: 1rem;
+    &__wrap{
+    border-bottom: 0.125rem solid $divider-color;
+    border-top: 0.125rem solid $divider-color;
+    @include flexDisplay(row, space-between, flex-start)
+    }
+    &__left{
+        width: 50%;
+        &--author{
+            font-weight: 700;
+        }
+        &--date{
+            color: $text2-color;
+        }
+    }
+    &__right{
+        width: 50%;
+        & > *{
+            @include flexDisplay(row, flex-start, center);
+            & > *{
+                padding-right: 1rem;
+                color: $text2-color;
+            }
+        }
+
+    }
+}

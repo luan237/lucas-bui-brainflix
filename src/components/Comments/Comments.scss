@@ -1,11 +1,95 @@
+@use "../../styles/partials/color" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
 .comments{
-    &__box{
+    margin: 0 1rem;
+    &__count{
+        margin: 0;
+        font-weight: 700;
+    }
+    &__container{
+        margin-top: 1rem;
         &--avatar{
-            background-color: gray;
-            height: 50px;
-            width: 50px;
+            width: 3.125rem;
+            height: 3.125rem;
             border-radius: 50%;
-            border: .1px solid gray;
+            margin-top: 1.5rem;
+            background-image: url("../../assets/images/Mohan-muruge.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        @include flexDisplay(row, space-between,flex-start);
+    }
+    &__form{
+        width: 80%;
+        @include flexDisplay(column, space-between, flex-start);
+        & > *{
+            margin-bottom: 1rem;
+        }
+        &--label{
+            color: $text2-color;
+            font-weight: 700;
+        }
+        &--input{
+            height: 7rem;
+            width: 95%;
+            border: 0.0625rem solid $divider-color;
+            border-radius: .25rem;
+            background-color: $form-field-color;
+            font-family: "Avenir", serif;
+            padding-top: 1rem;
+            padding-left: 1rem;
+        }
+        &--button{
+            width: 100%;
+            @include flexDisplay(row, flex-start, center);
+            background-color: $cta-color ;
+            border: 0;
+            border-radius: .25rem;
+            height: 3rem;
+            align-self: center;
+            & > *:first-child{
+                height: 70%;
+                width: 1.75rem;
+                padding-left: .5rem;
+            }
+            & > *:last-child{
+                width: 80%;
+                color: white;
+                font-size: 1rem;
+                font-weight: 700;
+            }
+        }
+    }
+    &__box{
+        border-top: 0.125rem solid $divider-color;
+        padding-top: 1rem;
+        @include flexDisplay(row,space-between,flex-start);
+        &:last-child{
+            border-bottom: 0.125rem solid $divider-color;
+        }
+        &--avatar{
+            background-color: $divider-color;
+            height: 3.125rem;
+            width: 3.125rem;
+            border-radius: 50%;
+            border: none;
+            margin-top: 1rem;;
+        }
+        &--right{
+            width: 80%;
+        }
+        &--info{
+            @include flexDisplay(row, space-between,center)
+        }
+        &--name{
+            font-weight: 700;
+        }
+        &--time{
+            color: $text2-color;
+        }
+        &--comment{
+            margin-top: 0;
         }
     }
 }

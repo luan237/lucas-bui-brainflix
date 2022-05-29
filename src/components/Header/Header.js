@@ -1,9 +1,8 @@
 import "./Header.scss";
 import headerLogo from "../../assets/logo/BrainFlix-logo.svg";
 import searchIcon from "../../assets/icons/search.svg";
-import avatar from "../../assets/images/Mohan-muruge.jpg";
 import uploadIcon from "../../assets/icons/upload.svg";
-function Header(props) {
+function Header() {
   return (
     <header className="header">
       {/* LOGO */}
@@ -24,7 +23,7 @@ function Header(props) {
             alt="search icon"
           />
         </div>
-        <img className="header__search-bar--avatar" alt="avatar" src={avatar} />
+        <div className="header__search-bar--avatar"></div>
       </div>
       {/* UPLOAD BAR */}
       <div className="header__upload">

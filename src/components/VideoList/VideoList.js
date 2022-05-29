@@ -1,6 +1,6 @@
 import "./VideoList.scss";
 
-function VideoList({ newList, newVideo, id }) {
+function VideoList({ newList, newVideo }) {
   return (
     <div className="list">
       <p className="list__next">NEXT VIDEOS</p>
@@ -18,8 +18,10 @@ function VideoList({ newList, newVideo, id }) {
               src={item.image}
               alt="video thumbnail"
             />
-            <p>{item.title}</p>
-            <p>{item.channel}</p>
+            <div className="list__info">
+              <p className="list__info--title">{item.title}</p>
+              <p className="list__info--channel">{item.channel}</p>
+            </div>
           </div>
         );
       })}

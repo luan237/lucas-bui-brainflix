@@ -1,7 +1,26 @@
+@use "../../styles/partials/color" as *;
+@use "../../styles/partials/mixins" as *;
+
 .list{
-    // margin-top: 30rem;
-    position: relative;
+    margin: 0 1rem;
+    &__next{
+        color: $text2-color;
+        font-weight: 700;
+    }
+    &__item{
+        @include flexDisplay(row,space-between,flex-start);
+        margin-bottom: 1rem;
+    }
     &__thumbnail{
-    width: 30%;
+    width: 40%;
+    border-radius: .35rem;
+    aspect-ratio: 16 / 9;
+    }
+    &__info{
+        width: 50%;
+        &--title{
+            font-weight: 700;
+            margin-top: 0;
+        }
     }
 }
