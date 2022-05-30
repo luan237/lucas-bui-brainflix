@@ -17,7 +17,7 @@ function timeSince(timeStamp) {
   if (secondsPast < 2629800) {
     return parseInt(secondsPast / 86400) + " days ago";
   }
-  if ((secondsPast < 31, 557, 600)) {
+  if (secondsPast < 31557600) {
     return parseInt(secondsPast / 2629800) + " months ago";
   } else {
     return "more than a year ago";
