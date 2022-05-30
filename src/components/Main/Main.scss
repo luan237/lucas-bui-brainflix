@@ -1,0 +1,8 @@
+@use "../../styles/partials/color" as *;
+@use "../../styles/partials/mixins" as *;
+
+.page{
+    @include desktop{
+        @include flexDisplay(row, flex-start, normal)
+    }
+}

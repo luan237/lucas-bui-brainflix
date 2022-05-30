@@ -10,6 +10,9 @@
         @include flexDisplay(row, space-between, center);
         margin: 1rem 2rem;
     }
+    @include desktop{
+        margin: 1rem 4rem;
+    }
     &__logo{
         width: 50%;
         margin-bottom: 1rem;
@@ -25,6 +28,9 @@
         @include tablet{
             flex-wrap: nowrap;
             width: 70%;
+        }
+        @include desktop{
+            width: 50%;
         }
         &--container{
             width: 80%;

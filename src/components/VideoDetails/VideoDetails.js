@@ -6,6 +6,7 @@ function VideoDetails(props) {
   let time = new Date(props.showingVideo.timestamp).toLocaleDateString();
   return (
     <div className="detail">
+      <p className="detail__name page-header">{props.showingVideo.title}</p>
       <div className="detail__wrap">
         <div className="detail__left">
           <p className="detail__left--author">

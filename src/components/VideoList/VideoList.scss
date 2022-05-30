@@ -2,7 +2,10 @@
 @use "../../styles/partials/mixins" as *;
 
 .list{
-    margin: 0 1rem;
+    padding: 0 1rem;
+    @include desktop{
+        border-left: 2px solid $divider-color;
+    }
     &__next{
         color: $text2-color;
         font-weight: 700;
@@ -13,6 +16,9 @@
         @include tablet{
             justify-content: flex-start;
         }
+        @include desktop{
+            margin-bottom: 0;
+        }
     }
     &__thumbnail{
     width: 40%;
@@ -21,15 +27,22 @@
     @include tablet{
         width: 20%;
     }
+    @include desktop{
+        width: 10rem;
+    }
     }
     &__info{
         width: 50%;
+        @include tablet{
+            margin-left: 1rem;
+        }
+        @include desktop{
+            width: 80%;
+        }
         &--title{
             font-weight: 700;
             margin-top: 0;
         }
-        @include tablet{
-            margin-left: 1rem;
-        }
+        
     }
 }

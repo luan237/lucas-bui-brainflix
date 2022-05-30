@@ -3,8 +3,10 @@
 .detail{
     padding: 1rem;
     @include tablet{
-        padding-top: 0;
         padding: 1rem 2rem;
+    }
+    @include desktop{
+        padding: 1rem 0 0 4rem;
     }
     &__wrap{
     border-bottom: 0.125rem solid $divider-color;
@@ -12,6 +14,7 @@
     @include flexDisplay(row, space-between, flex-start);
     @include tablet{
         border-top: none;
+        
     }
     }
     &__left{
@@ -34,6 +37,9 @@
         @include tablet{
             @include flexDisplay(row, flex-end, normal)
         }
+        @include desktop{
+            padding-right: 2rem;
+        }
         & > *{
             @include flexDisplay(row, flex-start, center);
             @include tablet{
@@ -48,5 +54,12 @@
             }
         }
 
+    }
+    &__content{
+        @include desktop{
+            margin-bottom: 0;
+            padding-bottom: 2rem;
+            padding-right: 2rem;
+        }
     }
 }

@@ -36,12 +36,16 @@ class Main extends React.Component {
     return (
       <>
         <Video showingVideo={this.state.showingVideo} />
-        <VideoDetails showingVideo={this.state.showingVideo} />
-        <Comments showingComments={this.state.showingVideo.comments} />
-        <VideoList
-          newList={this.updatedVideoList()}
-          newVideo={this.updatedVideo}
-        />
+        <div className="page">
+          <div className="page__left">
+            <VideoDetails showingVideo={this.state.showingVideo} />
+            <Comments showingComments={this.state.showingVideo.comments} />
+          </div>
+          <VideoList
+            newList={this.updatedVideoList()}
+            newVideo={this.updatedVideo}
+          />
+        </div>
       </>
     );
   }

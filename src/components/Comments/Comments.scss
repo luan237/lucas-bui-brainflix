@@ -2,9 +2,12 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
 .comments{
-    margin: 0 1rem;
+    padding: 0 1rem;
     @include tablet{
-        margin: 0 2rem;
+        padding: 0 2rem;
+    }
+    @include desktop{
+        padding: 0 0 0 4rem;
     }
     &__count{
         margin: 0;
@@ -28,6 +31,8 @@
         @include flexDisplay(column, space-between, flex-start);
         @include tablet{
             width: 90%;
+            @include flexDisplay(row, space-between, normal);
+            flex-wrap: wrap
         }
         & > *{
             margin-bottom: 1rem;
@@ -35,6 +40,7 @@
         &--label{
             color: $text2-color;
             font-weight: 700;
+            width: 100%;
         }
         &--input{
             height: 7rem;
@@ -47,6 +53,10 @@
             padding-left: 1rem;
             @include tablet{
                 height: 2rem;
+                width: 60%;
+            }
+            @include desktop{
+                width: 60%;
             }
         }
         &--button{
@@ -57,6 +67,12 @@
             border-radius: .25rem;
             height: 3rem;
             align-self: center;
+            @include tablet{
+                width: 30%;
+            }
+            @include desktop{
+                margin-right: 2rem;
+            }
             & > *:first-child{
                 height: 70%;
                 width: 1.75rem;
@@ -74,8 +90,14 @@
         border-top: 0.125rem solid $divider-color;
         padding-top: 1rem;
         @include flexDisplay(row,space-between,flex-start);
+        @include desktop{
+            padding-right: 2rem;
+        }
         &:last-child{
             border-bottom: 0.125rem solid $divider-color;
+            @include desktop{
+                border-bottom: none;
+            }
         }
         &--avatar{
             background-color: $divider-color;

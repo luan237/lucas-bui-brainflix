@@ -7,12 +7,9 @@
         &--show{
         width: 100%;
         aspect-ratio: 16 / 9;
-        }
-    }
-    &__name{
-        margin: 1rem 1rem 0 1rem;
         @include tablet{
-            margin: 1rem 2rem 0 2rem;
+            height: 25rem;
+        }
         }
     }
 }
