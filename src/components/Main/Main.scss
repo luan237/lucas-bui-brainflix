@@ -3,6 +3,11 @@
 
 .page{
     @include desktop{
-        @include flexDisplay(row, flex-start, normal)
+        @include flexDisplay(row, flex-start, normal);
+    }
+    &__left{
+        @include desktop{
+        width: 100%;
+        }
     }
 }

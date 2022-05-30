@@ -5,6 +5,7 @@
     padding: 0 1rem;
     @include desktop{
         border-left: 2px solid $divider-color;
+        width: 34%;
     }
     &__next{
         color: $text2-color;
