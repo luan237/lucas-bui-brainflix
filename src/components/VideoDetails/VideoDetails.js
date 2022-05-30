@@ -3,17 +3,20 @@ import viewsIcon from "../../assets/icons/views.svg";
 import likesIcon from "../../assets/icons/likes.svg";
 
 function VideoDetails(props) {
+  // get uploaded time of the video
   let time = new Date(props.showingVideo.timestamp).toLocaleDateString();
   return (
     <div className="detail">
       <p className="detail__name page-header">{props.showingVideo.title}</p>
       <div className="detail__wrap">
+        {/* channel and date */}
         <div className="detail__left">
           <p className="detail__left--author">
             By {props.showingVideo.channel}
           </p>
           <p className="detail__left--date">{time}</p>
         </div>
+        {/* views and likes */}
         <div className="detail__right">
           <div className="detail__right--views">
             <img src={viewsIcon} alt="view icon" />

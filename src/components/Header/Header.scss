@@ -1,7 +1,6 @@
 @use "../../styles/partials/color" as *;
 @use "../../styles/partials/mixins" as *;
 
-
 .header{
     margin: 1rem;
     display: flex;
@@ -20,7 +19,9 @@
             width: 20%;
         }
     }
+
     &__search-bar{
+        // outer wrap of everything in header but logo
         @include flexDisplay(row, space-between, normal);
         width: 100%;
         position: relative;
@@ -33,6 +34,7 @@
             width: 50%;
         }
         &--container{
+            // outer wrap of the search bar
             width: 80%;
             @include tablet{
                 width: 58%;
@@ -77,6 +79,7 @@
 }
 
 .search-bar{
+    // the search bar itself
     width: 70%;
     color: $text-color;
     padding-left: 2.5rem;

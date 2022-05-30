@@ -1,6 +1,7 @@
 @use "../../styles/partials/color" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
+
 .comments{
     padding: 0 1rem;
     @include tablet{
@@ -42,6 +43,7 @@
             font-weight: 700;
             width: 100%;
         }
+        // comment text input
         &--input{
             height: 7rem;
             width: 95%;
@@ -59,6 +61,7 @@
                 width: 60%;
             }
         }
+        // comment submit button
         &--button{
             width: 100%;
             @include flexDisplay(row, flex-start, center);
@@ -94,6 +97,7 @@
             padding-right: 2rem;
         }
         &:last-child{
+            // border for the last comment
             border-bottom: 0.125rem solid $divider-color;
             @include desktop{
                 border-bottom: none;
@@ -114,6 +118,7 @@
             }
         }
         &--info{
+            // comments name and time
             @include flexDisplay(row, space-between,center)
         }
         &--name{

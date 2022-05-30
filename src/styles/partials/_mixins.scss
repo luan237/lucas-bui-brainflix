@@ -80,6 +80,7 @@ a{
     border: none;
 }
 
+// display flex mixin for faster setup
 @mixin flexDisplay($flex-direction, $justify, $align) {
     display: flex;
     flex-direction: $flex-direction;

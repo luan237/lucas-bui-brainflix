@@ -12,7 +12,6 @@ function Video(props) {
             controls={true}
           ></video>
         </div>
-        {/* <p className="video__name page-header">{props.showingVideo.title}</p> */}
       </div>
     </>
   );

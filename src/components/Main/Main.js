@@ -7,6 +7,8 @@ import VideoDetailsList from "../../data/video-details.json";
 import VideosBasic from "../../data/videos.json";
 import Comments from "../Comments/Comments";
 
+/* since array from json files got some error with array methods, 
+convert it to array again */
 const videosBasic = Array.from(VideosBasic);
 const videoDetailsList = Array.from(VideoDetailsList);
 
@@ -18,6 +20,7 @@ class Main extends React.Component {
     showingVideoDetails: videoDetailsList[0],
   };
 
+  // function to change current video when click on another one
   updatedVideo = (id) => {
     let showingVideo2 = this.state.videosBasic.find((video) => video.id === id);
     let showingVideoDetails2 = this.state.videoDetailsList.find(
@@ -28,7 +31,7 @@ class Main extends React.Component {
       showingVideoDetails: showingVideoDetails2,
     });
   };
-
+  // function to change current list when click on another one
   updatedVideoList = () => {
     let updatedList = [...VideosBasic];
     let showingIndex = updatedList.indexOf(this.state.showingVideo);
@@ -39,6 +42,7 @@ class Main extends React.Component {
     return (
       <>
         <Video showingVideo={this.state.showingVideo} />
+        {/* for the desktop styling, added outer wrap for details and comments */}
         <div className="page">
           <div className="page__left">
             <VideoDetails showingVideo={this.state.showingVideoDetails} />
