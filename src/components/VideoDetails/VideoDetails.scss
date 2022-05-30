@@ -2,15 +2,28 @@
 @use "../../styles/partials/mixins" as *;
 .detail{
     padding: 1rem;
+    @include tablet{
+        padding-top: 0;
+        padding: 1rem 2rem;
+    }
     &__wrap{
     border-bottom: 0.125rem solid $divider-color;
     border-top: 0.125rem solid $divider-color;
-    @include flexDisplay(row, space-between, flex-start)
+    @include flexDisplay(row, space-between, flex-start);
+    @include tablet{
+        border-top: none;
+    }
     }
     &__left{
         width: 50%;
+        @include tablet{
+            @include flexDisplay(row, flex-start, normal)
+        }
         &--author{
             font-weight: 700;
+            @include tablet{
+                padding-right: 2rem;
+            }
         }
         &--date{
             color: $text2-color;
@@ -18,11 +31,20 @@
     }
     &__right{
         width: 50%;
+        @include tablet{
+            @include flexDisplay(row, flex-end, normal)
+        }
         & > *{
             @include flexDisplay(row, flex-start, center);
+            @include tablet{
+                padding-left: 2rem;
+            }
             & > *{
                 padding-right: 1rem;
                 color: $text2-color;
+                @include tablet{
+                    padding-right: .5rem;
+                }
             }
         }
 

@@ -10,17 +10,26 @@
     &__item{
         @include flexDisplay(row,space-between,flex-start);
         margin-bottom: 1rem;
+        @include tablet{
+            justify-content: flex-start;
+        }
     }
     &__thumbnail{
     width: 40%;
     border-radius: .35rem;
     aspect-ratio: 16 / 9;
+    @include tablet{
+        width: 20%;
+    }
     }
     &__info{
         width: 50%;
         &--title{
             font-weight: 700;
             margin-top: 0;
+        }
+        @include tablet{
+            margin-left: 1rem;
         }
     }
 }

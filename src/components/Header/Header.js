@@ -24,15 +24,16 @@ function Header() {
           />
         </div>
         <div className="header__search-bar--avatar"></div>
-      </div>
-      {/* UPLOAD BAR */}
-      <div className="header__upload">
-        <img
-          src={uploadIcon}
-          className="header__upload--icon"
-          alt="upload icon"
-        />
-        <p className="header__upload--text sub-header">UPLOAD</p>
+
+        {/* UPLOAD BAR */}
+        <button className="header__upload">
+          <img
+            src={uploadIcon}
+            className="header__upload--icon"
+            alt="upload icon"
+          />
+          <p className="header__upload--text sub-header">UPLOAD</p>
+        </button>
       </div>
     </header>
   );

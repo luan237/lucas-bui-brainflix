@@ -3,6 +3,9 @@
 @use "../../styles/partials/fonts" as *;
 .comments{
     margin: 0 1rem;
+    @include tablet{
+        margin: 0 2rem;
+    }
     &__count{
         margin: 0;
         font-weight: 700;
@@ -23,6 +26,9 @@
     &__form{
         width: 80%;
         @include flexDisplay(column, space-between, flex-start);
+        @include tablet{
+            width: 90%;
+        }
         & > *{
             margin-bottom: 1rem;
         }
@@ -39,6 +45,9 @@
             font-family: "Avenir", serif;
             padding-top: 1rem;
             padding-left: 1rem;
+            @include tablet{
+                height: 2rem;
+            }
         }
         &--button{
             width: 100%;
@@ -78,6 +87,9 @@
         }
         &--right{
             width: 80%;
+            @include tablet{
+                width: 90%;
+            }
         }
         &--info{
             @include flexDisplay(row, space-between,center)

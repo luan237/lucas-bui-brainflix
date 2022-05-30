@@ -1,24 +1,37 @@
 @use "../../styles/partials/color" as *;
+@use "../../styles/partials/mixins" as *;
 
 
 .header{
     margin: 1rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    // height: 11vh;
+    @include flexDisplay(column, flex-start, center);
+    @include tablet{
+        @include flexDisplay(row, space-between, center);
+        margin: 1rem 2rem;
+    }
     &__logo{
         width: 50%;
         margin-bottom: 1rem;
+        @include tablet{
+            width: 20%;
+        }
     }
     &__search-bar{
-        display: flex;
-        justify-content: space-between;
+        @include flexDisplay(row, space-between, normal);
         width: 100%;
         position: relative;
+        flex-wrap: wrap;
+        @include tablet{
+            flex-wrap: nowrap;
+            width: 70%;
+        }
         &--container{
             width: 80%;
+            @include tablet{
+                width: 58%;
+                order: 1
+            }
         }
         &--avatar{
             width: 3.125rem;
@@ -26,18 +39,25 @@
             border-radius: 50%;
             background-image: url("../../assets/images/Mohan-muruge.jpg");
             background-size: cover;
-            background-position: center
-            
+            background-position: center;
+            @include tablet{
+                order: 3
+            }
         }
     }
     &__upload{
         background-color: $cta-color;
         height: 3rem;
         width: 100%;
-        display: flex;
-        justify-content:flex-start;
-        align-items: center;
+        @include flexDisplay(row, flex-start, center);
         border-radius: .25rem;
+        border: none;
+        margin-top: 1rem;
+        @include tablet{
+            order: 2;
+            width: 30%;
+            margin-top: 0;
+        }
         &--icon{
             height: 2rem;
             padding-left: .5rem;
@@ -54,10 +74,14 @@
     width: 70%;
     color: $text-color;
     padding-left: 2.5rem;
-    height: 2rem;
+    height: 2.5rem;
     position: absolute;
     border-radius: .25rem;
     border: 0.125rem solid $divider-color;
+    @include tablet{
+        width: 45%;
+        max-width: 30rem;
+    }
     &--icon{
         position: absolute;
         height: 1.5rem;
