@@ -2,11 +2,15 @@ import "./Header.scss";
 import headerLogo from "../../assets/logo/BrainFlix-logo.svg";
 import searchIcon from "../../assets/icons/search.svg";
 import uploadIcon from "../../assets/icons/upload.svg";
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header className="header">
       {/* LOGO */}
-      <img className="header__logo" src={headerLogo} alt="BrainFlix logo" />
+      <Link to="/" className="header__logo">
+        <img src={headerLogo} alt="BrainFlix logo" />
+      </Link>
 
       {/* SEARCH BAR */}
       <div className="header__search-bar">
