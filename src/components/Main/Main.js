@@ -10,11 +10,12 @@ const apiLink = "https://project-2-api.herokuapp.com";
 const apiKey = "?api_key=5821f58b-d638-4339-9f50-71d86650f340";
 
 class Main extends React.Component {
+  // Initial state
   state = {
     videoList: [],
     showingVideo: null,
   };
-
+  // get API
   componentDidMount() {
     axios
       .get(`${apiLink}/videos${apiKey}`)
@@ -30,6 +31,8 @@ class Main extends React.Component {
         console.log(error);
       });
   }
+
+  // fetch data function
   fetchActiveVideo = (videoId) => {
     axios
       .get(`${apiLink}/videos/${videoId}${apiKey}`)
@@ -42,6 +45,8 @@ class Main extends React.Component {
         console.log(error);
       });
   };
+
+  // check for component update
   componentDidUpdate(prevProps) {
     const prevId = prevProps.match.params.id;
     const currentId = this.props.match.params.id;
@@ -57,7 +62,6 @@ class Main extends React.Component {
       (video) => video.id === this.state.showingVideo.id
     );
     updatedList.splice(showingIndex, 1);
-
     return updatedList;
   };
   render() {
