@@ -1,8 +1,7 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (

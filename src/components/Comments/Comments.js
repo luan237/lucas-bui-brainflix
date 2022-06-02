@@ -25,7 +25,7 @@ function timeSince(timeStamp) {
 }
 
 function Comments(props) {
-  let comments = props.showingVideo.comment;
+  let comments = props.showingVideo.comments;
   return (
     <div className="comments">
       {/* comments count */}
