@@ -31,12 +31,14 @@ function Header() {
 
         {/* UPLOAD BAR */}
         <button className="header__upload">
-          <img
-            src={uploadIcon}
-            className="header__upload--icon"
-            alt="upload icon"
-          />
-          <p className="header__upload--text sub-header">UPLOAD</p>
+          <Link to="/upload" className="header__upload--link">
+            <img
+              src={uploadIcon}
+              className="header__upload--icon"
+              alt="upload icon"
+            />
+            <p className="header__upload--text sub-header">UPLOAD</p>
+          </Link>
         </button>
       </div>
     </header>

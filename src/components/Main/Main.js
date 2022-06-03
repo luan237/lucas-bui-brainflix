@@ -15,6 +15,7 @@ class Main extends React.Component {
     videoList: [],
     showingVideo: null,
   };
+
   // get API
   componentDidMount() {
     axios
@@ -23,13 +24,15 @@ class Main extends React.Component {
         this.setState({
           videoList: response.data,
         });
+        console.log(this.props.match);
         const showingVideoId =
-          this.props.match.params.id || response.data[0].id;
+          this.props.match.params.yakiv || response.data[0].id;
         this.fetchActiveVideo(showingVideoId);
       })
       .catch((error) => {
         console.log(error);
       });
+    console.log(this.props);
   }
 
   // fetch data function
@@ -48,12 +51,14 @@ class Main extends React.Component {
 
   // check for component update
   componentDidUpdate(prevProps) {
-    const prevId = prevProps.match.params.id;
-    const currentId = this.props.match.params.id;
+    const prevId = prevProps.match.params.yakiv;
+    const currentId = this.props.match.params.yakiv;
     if (prevId !== currentId) {
       const showingVideoId = currentId || this.state.videoList[0].id;
       this.fetchActiveVideo(showingVideoId);
     }
+    // scroll to top after click the new video
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
   // function to change current list when click on another one
   updatedVideoList = () => {
@@ -79,7 +84,7 @@ class Main extends React.Component {
               <Comments showingVideo={this.state.showingVideo} />
             )}
           </div>
-          {showingVideo && <VideoList newList={this.updatedVideoList()} />}
+          {showingVideo && <VideoList newList={this.state.videoList} />}
         </div>
       </>
     );
