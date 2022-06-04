@@ -12,6 +12,12 @@ function App() {
         <Route exact path="/" component={Main} />
         <Route exact path="/upload" component={VideoUpload} />
         <Route path="/:id" component={Main} />
+        {/* <Route
+          path="/:id"
+          render={(routerProps) => {
+            <Main {...routerProps} />;
+          }} 
+        />*/}
       </Switch>
     </Router>
   );

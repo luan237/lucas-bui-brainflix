@@ -123,12 +123,26 @@
         }
         &--name{
             font-weight: 700;
+            width: 15rem;
         }
         &--time{
             color: $text2-color;
+            padding-left: 30%;
+            @include tablet{
+                padding-left: 34%;
+            }
+            @include desktop{
+                padding-left: 43%;
+            }
         }
         &--comment{
             margin-top: 0;
+        }
+        &--delete:active{
+            margin-bottom: .5rem;
+            margin-left: .5rem;
+            color: red;
+            transition: margin, color 0.5s;
         }
     }
 }

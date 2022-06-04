@@ -59,10 +59,6 @@ class Main extends React.Component {
     // scroll to top after click the new video
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  // prevent default on submit
-  handleSubmit(event) {
-    event.preventDefault();
-  }
 
   // function to change current list when click on another one
   updatedVideoList = () => {
@@ -86,10 +82,7 @@ class Main extends React.Component {
               <VideoDetails showingVideo={this.state.showingVideo} />
             )}
             {showingVideo && (
-              <Comments
-                handleSubmit={this.handleSubmit}
-                showingVideo={this.state.showingVideo}
-              />
+              <Comments showingId={this.state.showingVideo.id} />
             )}
           </div>
           {showingVideo && <VideoList newList={this.state.videoList} />}
