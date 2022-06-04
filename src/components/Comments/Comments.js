@@ -33,7 +33,12 @@ function Comments(props) {
       {/* comments container */}
       <div className="comments__container">
         <div className="comments__container--avatar"></div>
-        <form className="comments__form">
+
+        {/* comment form */}
+        <form
+          className="comments__form"
+          onSubmit={(e) => props.handleSubmit(e)}
+        >
           <label className="comments__form--label" htmlFor="comment">
             JOIN THE CONVERSATION
           </label>

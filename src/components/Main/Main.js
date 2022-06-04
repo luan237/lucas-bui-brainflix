@@ -24,15 +24,13 @@ class Main extends React.Component {
         this.setState({
           videoList: response.data,
         });
-        console.log(this.props.match);
         const showingVideoId =
-          this.props.match.params.yakiv || response.data[0].id;
+          this.props.match.params.id || response.data[0].id;
         this.fetchActiveVideo(showingVideoId);
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log(this.props);
   }
 
   // fetch data function
@@ -51,15 +49,21 @@ class Main extends React.Component {
 
   // check for component update
   componentDidUpdate(prevProps) {
-    const prevId = prevProps.match.params.yakiv;
-    const currentId = this.props.match.params.yakiv;
+    const prevId = prevProps.match.params.id;
+    const currentId = this.props.match.params.id;
     if (prevId !== currentId) {
       const showingVideoId = currentId || this.state.videoList[0].id;
       this.fetchActiveVideo(showingVideoId);
     }
+
     // scroll to top after click the new video
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+  // prevent default on submit
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
   // function to change current list when click on another one
   updatedVideoList = () => {
     let updatedList = [...this.state.videoList];
@@ -69,6 +73,7 @@ class Main extends React.Component {
     updatedList.splice(showingIndex, 1);
     return updatedList;
   };
+
   render() {
     const { showingVideo } = this.state;
     return (
@@ -81,7 +86,10 @@ class Main extends React.Component {
               <VideoDetails showingVideo={this.state.showingVideo} />
             )}
             {showingVideo && (
-              <Comments showingVideo={this.state.showingVideo} />
+              <Comments
+                handleSubmit={this.handleSubmit}
+                showingVideo={this.state.showingVideo}
+              />
             )}
           </div>
           {showingVideo && <VideoList newList={this.state.videoList} />}

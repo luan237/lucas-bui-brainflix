@@ -4,7 +4,7 @@
 .list{
     padding: 0 1rem;
     @include desktop{
-        border-left: 2px solid $divider-color;
+        border-left: 0.125rem solid $divider-color;
         width: 34%;
     }
     &__next{
@@ -43,7 +43,12 @@
         &--title{
             font-weight: 700;
             margin-top: 0;
+            color: black;
+        }
+        &--channel{
+            color: black;
         }
         
     }
 }
+

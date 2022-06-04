@@ -6,8 +6,8 @@ function VideoList({ newList }) {
       <p className="list__next">NEXT VIDEOS</p>
       {newList.map((item) => {
         return (
-          <div className="list__item" key={item.id}>
-            <Link to={`/${item.id}`}>
+          <Link to={`/${item.id}`} key={item.id} className="list__link">
+            <div className="list__item">
               <img
                 className="list__thumbnail"
                 src={item.image}
@@ -17,8 +17,8 @@ function VideoList({ newList }) {
                 <p className="list__info--title">{item.title}</p>
                 <p className="list__info--channel">{item.channel}</p>
               </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </div>

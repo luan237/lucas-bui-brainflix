@@ -1,4 +1,4 @@
-import "./Header.scss";
+import "./PageHeader.scss";
 import headerLogo from "../../assets/logo/BrainFlix-logo.svg";
 import searchIcon from "../../assets/icons/search.svg";
 import uploadIcon from "../../assets/icons/upload.svg";
@@ -9,7 +9,11 @@ function Header() {
     <header className="header">
       {/* LOGO */}
       <Link to="/" className="header__logo">
-        <img src={headerLogo} alt="BrainFlix logo" />
+        <img
+          className="header__logo--img"
+          src={headerLogo}
+          alt="BrainFlix logo"
+        />
       </Link>
 
       {/* SEARCH BAR */}

@@ -1,5 +1,5 @@
 import "./App.scss";
-import Header from "./components/Header/Header";
+import PageHeader from "./components/PageHeader/PageHeader";
 import Main from "./components/Main/Main";
 import VideoUpload from "./pages/VideoUpload/VideoUpload";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -7,17 +7,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <Header />
+      <PageHeader />
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route
-          exact
-          path="/upload"
-          render={(routerProps) => {
-            return <VideoUpload {...routerProps} />;
-          }}
-        />
-        <Route path="/:yakiv" component={Main} />
+        <Route exact path="/upload" component={VideoUpload} />
+        <Route path="/:id" component={Main} />
       </Switch>
     </Router>
   );

@@ -5,11 +5,12 @@
     position: relative;
     &__player{
         &--show{
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        @include tablet{
-            height: 25rem;
-        }
+            background-color: black;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            @include tablet{
+                height: 25rem;
+            }
         }
     }
 }
