@@ -3,13 +3,24 @@ import thumbnailUpload from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/icons/publish.svg";
 import { Component } from "react";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
+
+const apiLink = "http://localhost:8080";
 
 class VideoUpload extends Component {
   state = {
     isUploaded: false,
   };
 
-  handleUpload = () => {
+  handleUpload = (e) => {
+    axios
+      .post(apiLink, {
+        title: e.target.title,
+        description: e.target.description,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     this.setState({
       isUploaded: true,
     });
@@ -21,7 +32,7 @@ class VideoUpload extends Component {
     return (
       <div className="upload">
         <h1 className="upload__header">Upload Video</h1>
-        <form onSubmit={() => this.handleUpload()} className="upload__form">
+        <form onSubmit={(e) => this.handleUpload(e)} className="upload__form">
           <div className="upload__info-wrap">
             <label className="upload__label">
               VIDEO THUMBNAIL
@@ -29,6 +40,7 @@ class VideoUpload extends Component {
                 className="upload__thumb"
                 src={thumbnailUpload}
                 alt="thumbnail upload"
+                name="thumbnail"
               />
             </label>
             <label htmlFor="title" className="upload__label">
