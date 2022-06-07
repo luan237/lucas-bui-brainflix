@@ -3,8 +3,8 @@ import commentIcon from "../../assets/icons/add_comment.svg";
 import axios from "axios";
 import { Component } from "react";
 ////////////////////////////////////////////////////////////////////////////////////
-const apiLink = "https://project-2-api.herokuapp.com";
-const apiKey = "?api_key=5821f58b-d638-4339-9f50-71d86650f340";
+const apiLink = "http://localhost:8080";
+// const apiKey = "?api_key=9bffd4bc-52e5-4fcf-a13c-d2fd49ad9848";
 ////////////////////////////////////////////////////////////////////////////////////
 
 // Get dynamic time function (diving deeper)
@@ -38,7 +38,7 @@ class Comments extends Component {
     this.fetchComments(this.props.showingId);
   }
   fetchComments = (id) => {
-    axios.get(`${apiLink}/videos/${id}${apiKey}`).then((response) => {
+    axios.get(`${apiLink}/videos/${id}`).then((response) => {
       this.setState({
         comments: response.data.comments,
       });
@@ -54,7 +54,7 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${apiLink}/videos/${this.props.showingId}/comments${apiKey}`, {
+      .post(`${apiLink}/videos/${this.props.showingId}/comments`, {
         name: "BrainStation Man",
         comment: e.target.comment.value,
       })
@@ -66,7 +66,7 @@ class Comments extends Component {
   handleDelete = (e) => {
     axios
       .delete(
-        `${apiLink}/videos/${this.props.showingId}/comments/${e.target.id}${apiKey}`
+        `${apiLink}/videos/${this.props.showingId}/comments/${e.target.id}`
       )
       .then(() => this.fetchComments(this.props.showingId));
   };

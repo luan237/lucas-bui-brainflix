@@ -6,8 +6,8 @@ import React from "react";
 import Comments from "../Comments/Comments";
 import axios from "axios";
 
-const apiLink = "https://project-2-api.herokuapp.com";
-const apiKey = "?api_key=5821f58b-d638-4339-9f50-71d86650f340";
+const apiLink = "http://localhost:8080";
+// const apiKey = "?api_key=9bffd4bc-52e5-4fcf-a13c-d2fd49ad9848";
 
 class Main extends React.Component {
   // Initial state
@@ -19,8 +19,9 @@ class Main extends React.Component {
   // get API
   componentDidMount() {
     axios
-      .get(`${apiLink}/videos${apiKey}`)
+      .get(`${apiLink}/videos`)
       .then((response) => {
+        console.log(response.data);
         this.setState({
           videoList: response.data,
         });
@@ -36,7 +37,7 @@ class Main extends React.Component {
   // fetch data function
   fetchActiveVideo = (videoId) => {
     axios
-      .get(`${apiLink}/videos/${videoId}${apiKey}`)
+      .get(`${apiLink}/videos/${videoId}`)
       .then((response) => {
         this.setState({
           showingVideo: response.data,
