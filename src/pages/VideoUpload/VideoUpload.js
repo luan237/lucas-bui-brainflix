@@ -3,16 +3,34 @@ import thumbnailUpload from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/icons/publish.svg";
 import { Component } from "react";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class VideoUpload extends Component {
   state = {
     isUploaded: false,
   };
-
-  handleUpload = () => {
-    this.setState({
-      isUploaded: true,
-    });
+  handleUpload = (e) => {
+    this.setState(
+      {
+        isUploaded: false,
+      },
+      () => {
+        axios
+          .post("http://localhost:8080/videos", {
+            title: e.target.title.value,
+            description: e.target.description.value,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        this.setState({
+          isUploaded: true,
+        });
+      }
+    );
   };
   render() {
     if (this.state.isUploaded === true) {
@@ -21,7 +39,7 @@ class VideoUpload extends Component {
     return (
       <div className="upload">
         <h1 className="upload__header">Upload Video</h1>
-        <form onSubmit={() => this.handleUpload()} className="upload__form">
+        <form onSubmit={(e) => this.handleUpload(e)} className="upload__form">
           <div className="upload__info-wrap">
             <label className="upload__label">
               VIDEO THUMBNAIL
