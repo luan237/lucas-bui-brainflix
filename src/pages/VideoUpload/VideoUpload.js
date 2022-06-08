@@ -1,5 +1,5 @@
 import "./VideoUpload.scss";
-import thumbnailUpload from "../../assets/images/Upload-video-preview.jpg";
+// import thumbnailUpload from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/icons/publish.svg";
 import { Component } from "react";
 import { Redirect } from "react-router-dom";
@@ -8,27 +8,34 @@ import axios from "axios";
 class VideoUpload extends Component {
   state = {
     isUploaded: false,
+    selectedImage: "",
   };
   handleUpload = (e) => {
+    console.log(e.target.thumbnail.value);
     this.setState(
       {
         isUploaded: false,
       },
       () => {
-        axios
-          .post("http://localhost:8080/videos", {
-            title: e.target.title.value,
-            description: e.target.description.value,
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        const formData = new FormData();
+        formData.append("image", this.state.selectedImage);
+        formData.append("title", e.target.title.value);
+        formData.append("description", e.target.description.value);
+        axios.post("http://localhost:8080/videos", formData).catch((err) => {
+          console.log(err);
+        });
         this.setState({
           isUploaded: true,
         });
       }
     );
   };
+  handleImageChange(e) {
+    e.preventDefault();
+    this.setState({
+      selectedImage: e.target.files[0],
+    });
+  }
   render() {
     if (this.state.isUploaded === true) {
       return <Redirect from={this.props.match.url} to="/" />;
@@ -38,14 +45,16 @@ class VideoUpload extends Component {
         <h1 className="upload__header">Upload Video</h1>
         <form onSubmit={(e) => this.handleUpload(e)} className="upload__form">
           <div className="upload__info-wrap">
-            <label className="upload__label">
+            <label className="upload__label" htmlFor="thumbnail">
               VIDEO THUMBNAIL
-              <img
+              <input
+                onChange={(e) => this.handleImageChange(e)}
                 className="upload__thumb"
-                src={thumbnailUpload}
-                alt="thumbnail upload"
+                type="file"
                 name="thumbnail"
-              />
+                id="thumbnail"
+                accept="image/jpeg, image/png"
+              ></input>
             </label>
             <label htmlFor="title" className="upload__label">
               TITLE YOUR VIDEO
