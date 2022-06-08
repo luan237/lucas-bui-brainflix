@@ -1,5 +1,6 @@
 import "./Comments.scss";
 import commentIcon from "../../assets/icons/add_comment.svg";
+import likeIcon from "../../assets/icons/likes.svg";
 import axios from "axios";
 import { Component } from "react";
 ////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +71,11 @@ class Comments extends Component {
       )
       .then(() => this.fetchComments(this.props.showingId));
   };
+  handleLike = (e) => {
+    axios
+      .put(`${apiLink}/videos/${this.props.showingId}/comments/${e.target.id}`)
+      .then(() => this.fetchComments(this.props.showingId));
+  };
   render() {
     const comments = this.state.comments;
     comments.sort((a, b) => {
@@ -118,12 +124,20 @@ class Comments extends Component {
                   <div className="comments__box--info">
                     <p className="comments__box--name">{comment.name}</p>
                     <p className="comments__box--time">{time}</p>
+                    <img
+                      id={comment.id}
+                      className="comments__box--like"
+                      src={likeIcon}
+                      alt="like icon"
+                      onClick={(e) => this.handleLike(e)}
+                    />
+                    <p className="comments__box--like-count">{comment.likes}</p>
                     <p
                       id={comment.id}
                       onClick={(e) => this.handleDelete(e)}
                       className="comments__box--delete"
                     >
-                      X
+                      <br></br>X
                     </p>
                   </div>
                   <p className="comments__box--comment">{comment.comment}</p>

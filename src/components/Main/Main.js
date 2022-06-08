@@ -18,10 +18,13 @@ class Main extends React.Component {
 
   // get API
   componentDidMount() {
+    this.fetchVideoList();
+  }
+
+  fetchVideoList = () => {
     axios
       .get(`${apiLink}/videos`)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           videoList: response.data,
         });
@@ -32,8 +35,7 @@ class Main extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  }
-
+  };
   // fetch data function
   fetchActiveVideo = (videoId) => {
     axios
@@ -56,20 +58,9 @@ class Main extends React.Component {
       const showingVideoId = currentId || this.state.videoList[0].id;
       this.fetchActiveVideo(showingVideoId);
     }
-
     // scroll to top after click the new video
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
-
-  // function to change current list when click on another one
-  updatedVideoList = () => {
-    let updatedList = [...this.state.videoList];
-    let showingIndex = updatedList.findIndex(
-      (video) => video.id === this.state.showingVideo.id
-    );
-    updatedList.splice(showingIndex, 1);
-    return updatedList;
-  };
 
   render() {
     const { showingVideo } = this.state;
@@ -86,7 +77,13 @@ class Main extends React.Component {
               <Comments showingId={this.state.showingVideo.id} />
             )}
           </div>
-          {showingVideo && <VideoList newList={this.state.videoList} />}
+          {showingVideo && (
+            <VideoList
+              videoList={this.state.videoList}
+              showingVideo={this.state.showingVideo}
+              routerProps={this.props}
+            />
+          )}
         </div>
       </>
     );
