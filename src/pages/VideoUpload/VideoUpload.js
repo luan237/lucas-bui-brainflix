@@ -5,25 +5,29 @@ import { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-const apiLink = "http://localhost:8080";
-
 class VideoUpload extends Component {
   state = {
     isUploaded: false,
   };
-
   handleUpload = (e) => {
-    axios
-      .post(apiLink, {
-        title: e.target.title,
-        description: e.target.description,
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    this.setState({
-      isUploaded: true,
-    });
+    this.setState(
+      {
+        isUploaded: false,
+      },
+      () => {
+        axios
+          .post("http://localhost:8080/videos", {
+            title: e.target.title.value,
+            description: e.target.description.value,
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        this.setState({
+          isUploaded: true,
+        });
+      }
+    );
   };
   render() {
     if (this.state.isUploaded === true) {
