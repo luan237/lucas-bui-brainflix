@@ -81,6 +81,7 @@ class Main extends React.Component {
             <VideoList
               videoList={this.state.videoList}
               showingVideo={this.state.showingVideo}
+              routerProps={this.props}
             />
           )}
         </div>

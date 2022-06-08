@@ -6,48 +6,51 @@ import axios from "axios";
 const apiLink = "http://localhost:8080";
 class VideoList extends Component {
   state = {
-    videoList: this.props.videoList,
+    videoList: [],
     showingVideo: this.props.showingVideo,
   };
+  componentDidMount() {
+    this.fetchVideoList();
+  }
   componentDidUpdate(prevProps, prevState) {
-    // console.log(prevProps !== this.props);
-    console.log(this.state);
-    console.log(prevState);
     if (prevProps !== this.props) {
       this.setState(
         {
           showingVideo: this.props.showingVideo,
         },
-        () => {
-          axios.get(`${apiLink}/videos`).then((response) => {
-            this.updateVideoList(response);
-          });
-        }
+        () => this.fetchVideoList()
       );
     }
   }
+  fetchVideoList = () => {
+    axios.get(`${apiLink}/videos`).then((response) => {
+      this.updateVideoList(response);
+    });
+  };
 
   // function to change current list when click on another one
   updateVideoList = (response) => {
     let updatedList = [...response.data];
-    if (this.props.showingVideo) {
+    if (this.props.routerProps.match.params.id) {
       let showingIndex = updatedList.findIndex(
-        (video) => video.id === this.props.showingVideo.id
+        (video) => video.id === this.props.routerProps.match.params.id
       );
       updatedList.splice(showingIndex, 1);
-      console.log(showingIndex);
+      this.setState({
+        videoList: updatedList,
+      });
+    } else {
+      updatedList.splice(0, 1);
       this.setState({
         videoList: updatedList,
       });
     }
   };
   render() {
-    console.log(this.updateVideoList());
-    console.log(this.state.videoList());
     return (
       <div className="list">
         <p className="list__next">NEXT VIDEOS</p>
-        {this.state.videoList().map((item) => {
+        {this.state.videoList.map((item) => {
           return (
             <Link to={`/${item.id}`} key={item.id} className="list__link">
               <div className="list__item">

@@ -20,9 +20,6 @@ class VideoUpload extends Component {
             title: e.target.title.value,
             description: e.target.description.value,
           })
-          .then((response) => {
-            console.log(response);
-          })
           .catch((err) => {
             console.log(err);
           });
