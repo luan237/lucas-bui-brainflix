@@ -1,16 +1,19 @@
 import "./Video.scss";
+import ReactPlayer from "react-player";
+
+const youtubeApiKey = "AIzaSyCkNaQOg6SgzPwVewRCSajzMkkE9cjxpAs";
 
 function Video(props) {
   return (
     <>
       <div className="video">
         <div className="video__player">
-          <video
+          <ReactPlayer
             className="video__player--show"
             poster={props.showingVideo.image}
-            controls={true}
-            src="https://project-2-api.herokuapp.com/stream/?api_key=5821f58b-d638-4339-9f50-71d86650f340"
-          ></video>
+            controls={false}
+            url="https://www.youtube.com/watch?v=xxGaqJ-ge0w"
+          />
         </div>
       </div>
     </>
