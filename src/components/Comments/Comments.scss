@@ -132,17 +132,23 @@
                 padding-left: 34%;
             }
             @include desktop{
-                padding-left: 60%;
+                padding-left: 50%;
             }
         }
         &--comment{
             margin-top: 0;
         }
         &--delete:active{
-            margin-bottom: .5rem;
-            margin-left: .5rem;
+            border: 1px solid red;
+            padding-bottom: .25rem;
+            padding-left: .25rem;
             color: red;
-            transition: margin, color 0.5s;
+            transition: margin, color 0.25s;
+        }
+        &--like:active{
+            border: 3px dotted lightsalmon;
+            border-radius: 50%;
+            transition: border 0.1s;
         }
     }
 }

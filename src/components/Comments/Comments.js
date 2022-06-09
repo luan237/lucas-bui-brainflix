@@ -35,9 +35,13 @@ class Comments extends Component {
   state = {
     comments: [],
   };
+
+  // Initial onMount
   componentDidMount() {
     this.fetchComments(this.props.showingId);
   }
+
+  // fetch comment function
   fetchComments = (id) => {
     axios.get(`${apiLink}/videos/${id}`).then((response) => {
       this.setState({
@@ -45,6 +49,8 @@ class Comments extends Component {
       });
     });
   };
+
+  // update comments after user submit or user upload video
   componentDidUpdate(prevProps) {
     if (this.props.showingId) {
       if (prevProps.showingId !== this.props.showingId) {
@@ -52,6 +58,8 @@ class Comments extends Component {
       }
     }
   }
+
+  // handle submit comment form
   handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -64,6 +72,8 @@ class Comments extends Component {
         this.fetchComments(this.props.showingId);
       });
   };
+
+  // handle delete comment
   handleDelete = (e) => {
     axios
       .delete(
@@ -71,6 +81,8 @@ class Comments extends Component {
       )
       .then(() => this.fetchComments(this.props.showingId));
   };
+
+  // handle like comment
   handleLike = (e) => {
     axios
       .put(`${apiLink}/videos/${this.props.showingId}/comments/${e.target.id}`)
@@ -124,21 +136,25 @@ class Comments extends Component {
                   <div className="comments__box--info">
                     <p className="comments__box--name">{comment.name}</p>
                     <p className="comments__box--time">{time}</p>
-                    <img
-                      id={comment.id}
-                      className="comments__box--like"
-                      src={likeIcon}
-                      alt="like icon"
-                      onClick={(e) => this.handleLike(e)}
-                    />
-                    <p className="comments__box--like-count">{comment.likes}</p>
-                    <p
-                      id={comment.id}
-                      onClick={(e) => this.handleDelete(e)}
-                      className="comments__box--delete"
-                    >
-                      <br></br>X
-                    </p>
+                    <div className="comments__box--l-and-d">
+                      <img
+                        id={comment.id}
+                        className="comments__box--like"
+                        src={likeIcon}
+                        alt="like icon"
+                        onClick={(e) => this.handleLike(e)}
+                      />
+                      <p className="comments__box--like-count">
+                        {comment.likes}
+                      </p>
+                      <p
+                        id={comment.id}
+                        onClick={(e) => this.handleDelete(e)}
+                        className="comments__box--delete"
+                      >
+                        X
+                      </p>
+                    </div>
                   </div>
                   <p className="comments__box--comment">{comment.comment}</p>
                 </div>
