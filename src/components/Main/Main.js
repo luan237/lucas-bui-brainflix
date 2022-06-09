@@ -60,6 +60,12 @@ class Main extends React.Component {
     }
     // scroll to top after click the new video
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Title on the tab's name
+    if (this.props.match.params.id) {
+      this.state.showingVideo &&
+        (document.title = this.state.showingVideo.title);
+    } else document.title = "Home";
   }
 
   render() {
