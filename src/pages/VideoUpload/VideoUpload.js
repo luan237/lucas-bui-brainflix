@@ -11,33 +11,19 @@ class VideoUpload extends Component {
     selectedImage: "",
   };
   handleUpload = (e) => {
-    console.log(this.state.selectedImage);
+    console.log(e.target.thumbnail.value);
     this.setState(
       {
         isUploaded: false,
       },
       () => {
         const formData = new FormData();
-        this.state.selectedImage &&
-          formData.append(
-            "thumbnail",
-            this.state.selectedImage,
-            this.state.selectedImage.name
-          );
+        formData.append("thumbnail", this.state.selectedImage);
         formData.append("title", e.target.title.value);
         formData.append("description", e.target.description.value);
-        axios
-          .post("http://localhost:8080/videos", formData, {
-            headers: {
-              "content-type": "multipart/form-data",
-            },
-          })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        axios.post("http://localhost:8080/videos", formData).catch((err) => {
+          console.log(err);
+        });
         this.setState({
           isUploaded: true,
         });
@@ -57,11 +43,7 @@ class VideoUpload extends Component {
     return (
       <div className="upload">
         <h1 className="upload__header">Upload Video</h1>
-        <form
-          onSubmit={(e) => this.handleUpload(e)}
-          className="upload__form"
-          encType="multipart/form-data"
-        >
+        <form onSubmit={(e) => this.handleUpload(e)} className="upload__form">
           <div className="upload__info-wrap">
             <label className="upload__label" htmlFor="thumbnail">
               VIDEO THUMBNAIL
