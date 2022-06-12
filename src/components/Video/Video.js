@@ -8,7 +8,7 @@ function Video(props) {
           <video
             className="video__player--show"
             poster={props.showingVideo.image}
-            controls={false}
+            controls={true}
             src="https://project-2-api.herokuapp.com/stream?api_key=9bffd4bc-52e5-4fcf-a13c-d2fd49ad9848"
           />
         </div>
